@@ -31,8 +31,8 @@ public class Country {
 	private String nationality;
 	private String continent;
 	
-	@OneToMany(mappedBy="country")
-	private List<State> states;
+	/*@OneToMany(mappedBy="country")
+	private List<State> states;*/
 	
 	public Integer getId() {
 		return id;
@@ -81,7 +81,7 @@ public class Country {
 	public void setContinent(String continent) {
 		this.continent = continent;
 	}
-
+/*
 	public List<State> getStates() {
 		return states;
 	}
@@ -89,5 +89,5 @@ public class Country {
 	public void setStates(List<State> states) {
 		this.states = states;
 	}
-
+*/
 }
