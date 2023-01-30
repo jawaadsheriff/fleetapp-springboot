@@ -20,4 +20,18 @@ $(document).ready(function(){
 		$("#confirmDeleteButton").attr('href', href);
 		$("#deleteModal").modal('show');
 	});
+	
+	$("table #detailsButton").click(function(event){
+		event.preventDefault();
+		var href = $(this).attr('href');
+		$.get(href, function(country, status){
+			$("#idDetails").val(country.id);
+			$("#descriptionDetails").val(country.description);
+			$("#capitalDetails").val(country.capital);
+			$("#codeDetails").val(country.code);
+			$("#continentDetails").val(country.continent);
+			$("#nationalityDetails").val(country.nationality);
+		});
+		$("#detailsModal").modal('show');
+	});
 });
