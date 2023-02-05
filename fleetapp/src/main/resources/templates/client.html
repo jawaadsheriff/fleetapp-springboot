@@ -445,31 +445,371 @@
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-6">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ExtralargeModal">
+               New Client
+              </button>
+              <div class="modal fade" id="ExtralargeModal" tabindex="-1">
+                <div class="modal-dialog modal-xl">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Add Client</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <form th:action="@{/client/addNew}" method="post">
+                    <table width="100%">
+                    <tr>
+                    <td width="50%">
+                    <div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Id</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="inputNanme4" name="id" disabled>
+                  		</div>
+                	</div>
+                    <div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Name</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="inputNanme4" name="name">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Details</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="inputNanme4" name="details">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Website</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="inputNanme4" name="website">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputPassword" class="col-sm-4 col-form-label">Address</label>
+                  		<div class="col-sm-8">
+                    		<textarea class="form-control" style="height: 100px" id="inputNanme4" name="address"></textarea>
+                  		</div>
+                	</div>
+                    </td>
+                    <td width="50%" style="padding-left: 10px;">
+                    <div class="row mb-3">
+                  		<label class="col-sm-4 col-form-label">State/Province</label>
+                  		<div class="col-sm-8">
+                    		<select class="form-select" aria-label="Default select example" id="ddlState" name="stateid">
+                      			<option selected>--Select--</option>
+                      			<option th:each="state:${states}"
+	                      		th:value="${state.id}"
+	                      		th:text="${state.description}"></option>
+                    		</select>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label class="col-sm-4 col-form-label">Country</label>
+                  		<div class="col-sm-8">
+                    		<select class="form-select" aria-label="Default select example" id="ddlCountry" name="countryid">
+                      			<option selected>--Select--</option>
+                      			<option th:each="country:${countries}"
+	                      		th:value="${country.id}"
+	                      		th:text="${country.description}"></option>
+                    		</select>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">City</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="inputNanme4" name="city">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Phone</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="inputNanme4" name="phone">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Mobile</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="inputNanme4" name="mobile">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Email</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="inputNanme4" name="email">
+                  		</div>
+                	</div>
+                    </td>
+                    </tr>
+                    </table>
+	                <div class="text-center">
+	                  <button type="submit" class="btn btn-primary">Submit</button>
+	                </div>
+	              </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Website</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="client:${clients}">
+                    <td th:text="${client.name}"></td>
+                    <td th:text="${client.website}"></td>
+                    <td th:text="${client.email}"></td>
+                    <td th:text="${client.city}"></td>
+                    <td th:text="${client.phone}"></td>
+                    <td>
+                    <div class="btn-group">
+                    	<a th:href="@{/client/findById(id=${client.id})}" class="btn btn-primary" id="editButton"><i class="bi bi-pencil-square"></i></a>
+                    	<a th:href="@{/client/findById(id=${client.id})}" class="btn btn-success" id="detailsButton"><i class="bi bi-file-earmark-text"></i></a>
+                    	<a th:href="@{/client/delete(id=${client.id})}" class="btn btn-danger" id="deleteButton"><i class="bi bi-x-circle-fill"></i></a>
+                    </div>
+                    </td>
+                  </tr>
+                </tbody>
+	</table>
+	
+	<div class="modal fade" id="editModal" tabindex="-1">
+                <div class="modal-dialog modal-xl">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Edit Client</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <form th:action="@{/client/update}" method="put">
+                    <table width="100%">
+                    <tr>
+                    <td width="50%">
+                    <div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Id</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="idEdit" name="id" readonly>
+                  		</div>
+                	</div>
+                    <div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Name</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="nameEdit" name="name">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Details</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="detailsEdit" name="details">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Website</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="websiteEdit" name="website">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputPassword" class="col-sm-4 col-form-label">Address</label>
+                  		<div class="col-sm-8">
+                    		<textarea class="form-control" style="height: 100px" id="addressEdit" name="address"></textarea>
+                  		</div>
+                	</div>
+                    </td>
+                    <td width="50%" style="padding-left: 10px;">
+                    <div class="row mb-3">
+                  		<label class="col-sm-4 col-form-label">State/Province</label>
+                  		<div class="col-sm-8">
+                    		<select class="form-select" aria-label="Default select example" id="ddlStateEdit" name="stateid">
+                      			<option selected>--Select--</option>
+                      			<option th:each="state:${states}"
+	                      		th:value="${state.id}"
+	                      		th:text="${state.description}"></option>
+                    		</select>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label class="col-sm-4 col-form-label">Country</label>
+                  		<div class="col-sm-8">
+                    		<select class="form-select" aria-label="Default select example" id="ddlCountryEdit" name="countryid">
+                      			<option selected>--Select--</option>
+                      			<option th:each="country:${countries}"
+	                      		th:value="${country.id}"
+	                      		th:text="${country.description}"></option>
+                    		</select>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">City</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="cityEdit" name="city">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Phone</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="phoneEdit" name="phone">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Mobile</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="mobileEdit" name="mobile">
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Email</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="emailEdit" name="email">
+                  		</div>
+                	</div>
+                    </td>
+                    </tr>
+                    </table>
+	                <div class="text-center">
+	                  <button type="submit" class="btn btn-primary">Submit</button>
+	                </div>
+	              </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Example Card</h5>
-              <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
-            </div>
-          </div>
+<!-- Details Modal -->
 
-        </div>
+<div class="modal fade" id="detailsModal" tabindex="-1">
+                <div class="modal-dialog modal-xl">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Client Details</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <table width="100%">
+                    <tr>
+                    <td width="50%">
+                    <div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Id</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="idDetails" name="id" disabled>
+                  		</div>
+                	</div>
+                    <div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Name</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="nameDetails" name="name" disabled>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Details</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="detailsDetails" name="details" disabled>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Website</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="websiteDetails" name="website" disabled>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputPassword" class="col-sm-4 col-form-label">Address</label>
+                  		<div class="col-sm-8">
+                    		<textarea class="form-control" style="height: 100px" id="addressDetails" name="address" disabled></textarea>
+                  		</div>
+                	</div>
+                    </td>
+                    <td width="50%" style="padding-left: 10px;">
+                    <div class="row mb-3">
+                  		<label class="col-sm-4 col-form-label">State/Province</label>
+                  		<div class="col-sm-8">
+                    		<select class="form-select" aria-label="Default select example" id="ddlStateDetails" name="stateid" disabled>
+                      			<option selected>--Select--</option>
+                      			<option th:each="state:${states}"
+	                      		th:value="${state.id}"
+	                      		th:text="${state.description}"></option>
+                    		</select>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label class="col-sm-4 col-form-label">Country</label>
+                  		<div class="col-sm-8">
+                    		<select class="form-select" aria-label="Default select example" id="ddlCountryDetails" name="countryid" disabled>
+                      			<option selected>--Select--</option>
+                      			<option th:each="country:${countries}"
+	                      		th:value="${country.id}"
+	                      		th:text="${country.description}"></option>
+                    		</select>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">City</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="cityDetails" name="city" disabled>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Phone</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="phoneDetails" name="phone" disabled>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Mobile</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="mobileDetails" name="mobile" disabled>
+                  		</div>
+                	</div>
+                	<div class="row mb-3">
+                  		<label for="inputText" class="col-sm-4 col-form-label">Email</label>
+                  		<div class="col-sm-8">
+                    		<input type="text" class="form-control" id="emailDetails" name="email" disabled>
+                  		</div>
+                	</div>
+                    </td>
+                    </tr>
+                    </table>
+	                <div class="text-center">
+	                  <button type="submit" class="btn btn-primary">Submit</button>
+	                </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        <div class="col-lg-6">
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Example Card</h5>
-              <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
+<!--- Delete Modal -->
+     		<div class="modal fade" id="deleteModal" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Delete Client</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure you want to delete this record?
+                    </div>
+                    <div class="modal-footer">
+                      <a id="confirmDeleteButton" class="btn btn-primary" href="">Yes, Delete</a>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
   </main><!-- End #main -->
 
@@ -498,9 +838,12 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/jquery/bootstrap.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/client.js"></script>
 
 </body>
 
