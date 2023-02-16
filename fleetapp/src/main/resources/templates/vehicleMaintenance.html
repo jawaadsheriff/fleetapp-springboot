@@ -291,17 +291,17 @@
             </a>
           </li>
           <li>
-            <a th:href="@{/vehiclemaintenance}">
+            <a th:href="@{/vehicleMaintenance}">
               <i class="bi bi-circle"></i><span>Maintenance</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/vehiclemovement}">
+            <a th:href="@{/vehicleMovement}">
               <i class="bi bi-circle"></i><span>Movements</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/vehiclehire}">
+            <a th:href="@{/vehicleHire}">
               <i class="bi bi-circle"></i><span>Hires</span>
             </a>
           </li>
@@ -439,8 +439,8 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Pages</li>
-          <li class="breadcrumb-item active">Blank</li>
+          <li class="breadcrumb-item">Vehicles</li>
+          <li class="breadcrumb-item active">Maintenance</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -523,6 +523,7 @@
                   <tr th:each="vehicleMaintenance:${vehicleMaintenances}">
                     <td th:text="${vehicleMaintenance.id}"></td>
                     <td th:text="${vehicleMaintenance.vehicle.name}"></td>
+                    <td th:text="${vehicleMaintenance.startDate}"></td>
                     <td th:text="${vehicleMaintenance.remarks}"></td>
                     <td>
                     <div class="btn-group">
@@ -545,7 +546,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <form class="row g-3" th:action="@{/vehicleMaintenance/update}" method="post">
+                    <form class="row g-3" th:action="@{/vehicleMaintenance/update}" method="put">
                     <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Id</label>
 	                  <input type="text" class="form-control" id="idEdit" name="id" readonly>
@@ -614,7 +615,7 @@
                     <div class="modal-body">
                     <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Id</label>
-	                  <input type="text" class="form-control" id="idEdit" name="idDetails" disabled>
+	                  <input type="text" class="form-control" id="idDetails" name="id" disabled>
 	                </div>
                     <div class="col-12">
 					<label for="inputNanme4" class="form-label">Vehicle</label>

@@ -24,7 +24,7 @@ public class Employee extends Person {
 	@JoinColumn(name="employeetypeid", insertable=false, updatable=false)
 	private EmployeeType employeeType;
 	private Integer employeetypeid;
-	private String photo;
+	private byte[] photo;
 	private String username;
 	
 	@ManyToOne
@@ -51,11 +51,11 @@ public class Employee extends Person {
 		this.employeetypeid = employeetypeid;
 	}
 
-	public String getPhoto() {
+	public byte[] getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(String photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
 

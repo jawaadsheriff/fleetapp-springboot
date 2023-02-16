@@ -30,7 +30,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		var href = $(this).attr('href');
 		$.get(href, function(vehicleMovement, status){
-			$("#idEdit").val(vehicleMovement.id);
+			$("#idDetails").val(vehicleMovement.id);
 			$("#ddlVehicleDetails").val(vehicleMovement.vehicleid);
 			
 			var departureDateDetailsStr =  vehicleMovement.departureDate.substr(0,10);
