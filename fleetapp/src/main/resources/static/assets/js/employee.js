@@ -1,8 +1,8 @@
-$(document).ready(function(){
-	$("table #editButton").click(function(event){
+$(document).ready(function() {
+	$("table #editButton").click(function(event) {
 		event.preventDefault();
 		var href = $(this).attr('href');
-		$.get(href, function(employee, status){
+		$.get(href, function(employee, status) {
 			$("#idEdit").val(employee.id);
 			$("#ddlTitleEdit").val(employee.title);
 			$("#initialsEdit").val(employee.initials);
@@ -13,11 +13,11 @@ $(document).ready(function(){
 			$("#ddlGenderEdit").val(employee.gender);
 			$("#ddlCountryEdit").val(employee.countryid);
 			$("#addressEdit").val(employee.address);
-			
-			var dobEditStr =  employee.dateOfBirth.substr(0,10);
+
+			var dobEditStr = employee.dateOfBirth.substr(0, 10);
 			$("#dobEdit").val(dobEditStr);
-			
-			var hireDateEditStr =  employee.hireDate.substr(0,10);
+
+			var hireDateEditStr = employee.hireDate.substr(0, 10);
 			$("#hireDateEdit").val(hireDateEditStr);
 			$("#ddlStateEdit").val(employee.stateid);
 			$("#cityEdit").val(employee.city);
@@ -30,18 +30,18 @@ $(document).ready(function(){
 		});
 		$("#editModal").modal('show');
 	});
-	
-	$("table #deleteButton").click(function(event){
+
+	$("table #deleteButton").click(function(event) {
 		event.preventDefault();
 		var href = $(this).attr('href');
 		$("#confirmDeleteButton").attr('href', href);
 		$("#deleteModal").modal('show');
 	});
-	
-	$("table #detailsButton").click(function(event){
+
+	$("table #detailsButton").click(function(event) {
 		event.preventDefault();
 		var href = $(this).attr('href');
-		$.get(href, function(employee, status){
+		$.get(href, function(employee, status) {
 			$("#idDetails").val(employee.id);
 			$("#ddlTitleDetails").val(employee.title);
 			$("#initialsDetails").val(employee.initials);
@@ -52,11 +52,11 @@ $(document).ready(function(){
 			$("#ddlGenderDetails").val(employee.gender);
 			$("#ddlCountryDetails").val(employee.countryid);
 			$("#addressDetails").val(employee.address);
-			
-			var dobDetailsStr =  employee.dateOfBirth.substr(0,10);
+
+			var dobDetailsStr = employee.dateOfBirth.substr(0, 10);
 			$("#dobDetails").val(dobDetailsStr);
-			
-			var hireDateDetailsStr =  employee.hireDate.substr(0,10);
+
+			var hireDateDetailsStr = employee.hireDate.substr(0, 10);
 			$("#hireDateDetails").val(hireDateDetailsStr);
 			$("#ddlStateDetails").val(employee.stateid);
 			$("#cityDetails").val(employee.city);
@@ -68,5 +68,12 @@ $(document).ready(function(){
 			$("#ddlEmployeeTypeDetails").val(employee.employeetypeid);
 		});
 		$("#detailsModal").modal('show');
+	});
+
+	$('.table #photoButton').on('click', function(event) {
+		event.preventDefault();
+		var href = $(this).attr('href');
+		$('#photoModal #employeePhoto').attr('src', href);
+		$('#photoModal').modal('show');
 	});
 });

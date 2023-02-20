@@ -639,6 +639,7 @@
               <table class="table">
                 <thead>
                   <tr>
+                  	<th scope="col">Photo</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Hire Date</th>
                     <th scope="col">Email</th>
@@ -649,6 +650,10 @@
                 </thead>
                 <tbody>
                   <tr th:each="employee:${employees}">
+                  	<td><a id="photoButton" th:href="@{'assets/img/photos/user.png'}">
+                  			<img th:src="@{'assets/img/photos/user.png'}" width="40" height="40">
+                  		</a>
+                  	</td>
                     <td th:text="${employee.firstname}+' '+${employee.lastname}"></td>
                     <td th:text="${employee.hireDate}"></td>
                     <td th:text="${employee.email}"></td>
@@ -1056,6 +1061,25 @@
                   </div>
                 </div>
               </div>
+
+<!-- Photo Modal -->
+
+<div class="modal fade" id="photoModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Photo</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <img id="employeePhoto" src="" width="95%" height="95%">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div> 
 
   </main><!-- End #main -->
 
