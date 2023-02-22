@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+import org.springframework.data.annotation.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -24,7 +25,6 @@ public class Employee extends Person {
 	@JoinColumn(name="employeetypeid", insertable=false, updatable=false)
 	private EmployeeType employeeType;
 	private Integer employeetypeid;
-	private byte[] photo;
 	private String username;
 	
 	@ManyToOne
@@ -50,15 +50,6 @@ public class Employee extends Person {
 	public void setEmployeetypeid(Integer employeetypeid) {
 		this.employeetypeid = employeetypeid;
 	}
-
-	public byte[] getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
-	}
-
 	public String getUsername() {
 		return username;
 	}
@@ -89,5 +80,13 @@ public class Employee extends Person {
 
 	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
+	}
+	
+	@Transient
+	public String getPhotosImagePath() {
+		if(getPhoto() == null || getId() == null) {
+			return null;
+		}
+		return "/images/" + getId() + "/" + getPhoto();
 	}
 }

@@ -50,7 +50,7 @@ public class Person {
 	private String phone;
 	private String mobile;
 	private String email;
-	private byte[] photo;
+	private String photo;
 	
 	public Integer getId() {
 		return id;
@@ -166,10 +166,10 @@ public class Person {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public byte[] getPhoto() {
+	public String getPhoto() {
 		return photo;
 	}
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
 	
