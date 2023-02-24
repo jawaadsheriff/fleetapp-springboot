@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -209,9 +210,10 @@
 
         <li class="nav-item dropdown pe-3">
 
+
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${username}">Guest</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -254,7 +256,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" th:href="@{/logout}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -291,17 +293,17 @@
             </a>
           </li>
           <li>
-            <a th:href="@{/vehiclemaintenance}">
+            <a th:href="@{/vehicleMaintenance}">
               <i class="bi bi-circle"></i><span>Maintenance</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/vehiclemovement}">
+            <a th:href="@{/vehicleMovement}">
               <i class="bi bi-circle"></i><span>Movements</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/vehiclehire}">
+            <a th:href="@{/vehicleHire}">
               <i class="bi bi-circle"></i><span>Hires</span>
             </a>
           </li>
@@ -314,22 +316,22 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/vehiclemake}">
+            <a th:href="@{/vehicleMake}">
               <i class="bi bi-circle"></i><span>Vehicle Make</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/vehicletype}">
+            <a th:href="@{/vehicleType}">
               <i class="bi bi-circle"></i><span>Vehicle Types</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/vehiclemodel}">
+            <a th:href="@{/vehicleModel}">
               <i class="bi bi-circle"></i><span>Vehicle Models</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/vehiclestatus}">
+            <a th:href="@{/vehicleStatus}">
               <i class="bi bi-circle"></i><span>Status Values</span>
             </a>
           </li>
@@ -375,12 +377,12 @@
         </a>
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/jobtitle}">
+            <a th:href="@{/jobTitle}">
               <i class="bi bi-circle"></i><span>Job Titles</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/employeetype}">
+            <a th:href="@{/employeeType}">
               <i class="bi bi-circle"></i><span>Employee Types</span>
             </a>
           </li>
@@ -398,7 +400,7 @@
             </a>
           </li>
           <li>
-            <a th:href="@{/invoicestatus}">
+            <a th:href="@{/invoiceStatus}">
               <i class="bi bi-circle"></i><span>Invoice Status Values</span>
             </a>
           </li>
@@ -427,57 +429,6 @@
           </li>
         </ul>
       </li><!-- End Icons Nav -->
-      
-      <li class="nav-heading">Pages</li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
-          <span>F.A.Q</span>
-        </a>
-      </li><!-- End F.A.Q Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-envelope"></i>
-          <span>Contact</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span>Register</span>
-        </a>
-      </li><!-- End Register Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
-          <i class="bi bi-dash-circle"></i>
-          <span>Error 404</span>
-        </a>
-      </li><!-- End Error 404 Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>Blank</span>
-        </a>
-      </li><!-- End Blank Page Nav -->
 
     </ul>
 

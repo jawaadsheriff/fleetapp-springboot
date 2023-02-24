@@ -1,6 +1,6 @@
 package com.sheriff.fleetapp.models;
 
-import jakarta.persistence.Entity;
+import javax.persistence.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
