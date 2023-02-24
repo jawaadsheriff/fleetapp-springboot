@@ -14,19 +14,19 @@ public class EmployeeTypeService {
 
 	@Autowired
 	private EmployeeTypeRepository employeeTypeRepository;
-	
+
 	public List<EmployeeType> getEmployeeTypes(){
 		return employeeTypeRepository.findAll();
 	}
-	
+
 	public void saveEmployeeType(EmployeeType employeeType) {
 		employeeTypeRepository.save(employeeType);
 	}
-	
+
 	public Optional<EmployeeType> getEmployeeTypeById(Integer id) {
 		return employeeTypeRepository.findById(id);
 	}
-	
+
 	public void deleteEmployeeType(Integer id) {
 		employeeTypeRepository.deleteById(id);
 	}

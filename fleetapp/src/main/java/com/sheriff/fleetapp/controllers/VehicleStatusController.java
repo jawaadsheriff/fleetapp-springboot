@@ -27,25 +27,25 @@ public class VehicleStatusController {
 		model.addAttribute("vehicleStatuses", vehicleStatusList);
 		return "vehicleStatus";
 	}
-	
+
 	@PostMapping("/vehicleStatus/addNew")
 	public String saveVehicleStatus(VehicleStatus vehicleStatus) {
 		vehicleStatusService.saveVehicleStatus(vehicleStatus);
 		return "redirect:/vehicleStatus";
 	}
-	
+
 	@RequestMapping("/vehicleStatus/findById")
 	@ResponseBody
 	public Optional<VehicleStatus> getVehicleStatusById(int id) {
 		return vehicleStatusService.getVehicleStatusById(id);
 	}
-	
+
 	@RequestMapping(value = "/vehicleStatus/update", method = {RequestMethod.PUT, RequestMethod.GET})
 	public String updateVehicleStatus(VehicleStatus vehicleStatus) {
 		vehicleStatusService.saveVehicleStatus(vehicleStatus);
 		return "redirect:/vehicleStatus";
 	}
-	
+
 	@RequestMapping(value = "/vehicleStatus/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteVehicleStatus(Integer id) {
 		vehicleStatusService.deleteVehicleStatus(id);

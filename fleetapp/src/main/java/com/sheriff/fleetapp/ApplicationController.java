@@ -15,14 +15,19 @@ public class ApplicationController {
 		model.addAttribute("username", userDetails.getUsername());
 		return "index";
 	}
-	
+
 	@GetMapping("/login")
 	public String login() {
 		return "login";
 	}
-	
+
 	@GetMapping("/logout")
 	public String logout() {
 		return "login";
+	}
+	
+	@GetMapping("/register")
+	public String register() {
+		return "register";
 	}
 }

@@ -14,19 +14,19 @@ public class SupplierService {
 
 	@Autowired
 	private SupplierRepository supplierRepository;
-	
+
 	public List<Supplier> getSupplier(){
 		return supplierRepository.findAll();
 	}
-	
+
 	public void saveSupplier(Supplier supplier) {
 		supplierRepository.save(supplier);
 	}
-	
+
 	public void deleteSupplier(Integer id) {
 		supplierRepository.deleteById(id);
 	}
-	
+
 	public Optional<Supplier> findSupplierById(Integer id) {
 		return supplierRepository.findById(id);
 	}

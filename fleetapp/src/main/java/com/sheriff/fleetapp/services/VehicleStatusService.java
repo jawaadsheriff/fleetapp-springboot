@@ -14,19 +14,19 @@ public class VehicleStatusService {
 
 	@Autowired
 	private VehicleStatusRepository vehicleStatusRepository;
-	
+
 	public List<VehicleStatus> getVehicleStatus(){
 		return vehicleStatusRepository.findAll();
 	}
-	
+
 	public void saveVehicleStatus(VehicleStatus vehicleStatus) {
 		vehicleStatusRepository.save(vehicleStatus);
 	}
-	
+
 	public Optional<VehicleStatus> getVehicleStatusById(Integer id) {
 		return vehicleStatusRepository.findById(id);
 	}
-	
+
 	public void deleteVehicleStatus(Integer id) {
 		vehicleStatusRepository.deleteById(id);
 	}

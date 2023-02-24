@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sheriff.fleetapp.models.Supplier;
-import com.sheriff.fleetapp.services.SupplierService;
 import com.sheriff.fleetapp.services.CountryService;
 import com.sheriff.fleetapp.services.StateService;
+import com.sheriff.fleetapp.services.SupplierService;
 
 @Controller
 public class SupplierController {
@@ -24,10 +24,10 @@ public class SupplierController {
 
 	@Autowired
 	private CountryService countryService;
-	
+
 	@Autowired
 	private StateService stateService;
-	
+
 	@GetMapping("/supplier")
 	public String getSupplier(Model model) {
 		model.addAttribute("suppliers", supplierService.getSupplier());
@@ -35,25 +35,25 @@ public class SupplierController {
 		model.addAttribute("states", stateService.getStates());
 		return "supplier";
 	}
-	
+
 	@PostMapping("/supplier/addNew")
 	public String saveSupplier(Supplier supplier) {
 		supplierService.saveSupplier(supplier);
 		return "redirect:/supplier";
 	}
-	
+
 	@RequestMapping("/supplier/findById")
 	@ResponseBody
 	public Optional<Supplier> findSupplierById(int id) {
 		return supplierService.findSupplierById(id);
 	}
-	
+
 	@RequestMapping(value = "/supplier/update", method = {RequestMethod.GET, RequestMethod.PUT})
 	public String updateSupplier(Supplier supplier) {
 		supplierService.saveSupplier(supplier);
 		return "redirect:/supplier";
 	}
-	
+
 	@RequestMapping(value = "/supplier/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteSupplier(Integer id) {
 		supplierService.deleteSupplier(id);

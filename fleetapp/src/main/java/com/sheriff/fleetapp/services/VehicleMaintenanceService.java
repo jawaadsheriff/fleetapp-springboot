@@ -14,19 +14,19 @@ public class VehicleMaintenanceService {
 
 	@Autowired
 	private VehicleMaintenanceRepository vehicleMaintenanceRepository;
-	
+
 	public List<VehicleMaintenance> getVehicleMaintenance(){
 		return vehicleMaintenanceRepository.findAll();
 	}
-	
+
 	public void saveVehicleMaintenance(VehicleMaintenance vehicleMaintenance) {
 		vehicleMaintenanceRepository.save(vehicleMaintenance);
 	}
-	
+
 	public void deleteVehicleMaintenance(Integer id) {
 		vehicleMaintenanceRepository.deleteById(id);
 	}
-	
+
 	public Optional<VehicleMaintenance> getVehicleMaintenanceById(Integer id) {
 		return vehicleMaintenanceRepository.findById(id);
 	}

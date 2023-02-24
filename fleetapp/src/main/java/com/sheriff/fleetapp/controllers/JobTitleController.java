@@ -27,25 +27,25 @@ public class JobTitleController {
 		model.addAttribute("jobTitles", jobTitleList);
 		return "jobTitle";
 	}
-	
+
 	@PostMapping("/jobTitle/addNew")
 	public String saveJobTitle(JobTitle jobTitle) {
 		jobTitleService.saveJobTitle(jobTitle);
 		return "redirect:/jobTitle";
 	}
-	
+
 	@RequestMapping("/jobTitle/findById")
 	@ResponseBody
 	public Optional<JobTitle> getJobTitleById(int id) {
 		return jobTitleService.getJobTitleById(id);
 	}
-	
+
 	@RequestMapping(value = "/jobTitle/update", method = {RequestMethod.PUT, RequestMethod.GET})
 	public String updateJobTitle(JobTitle jobTitle) {
 		jobTitleService.saveJobTitle(jobTitle);
 		return "redirect:/jobTitle";
 	}
-	
+
 	@RequestMapping(value = "/jobTitle/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteJobTitle(Integer id) {
 		jobTitleService.deleteJobTitle(id);

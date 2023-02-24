@@ -14,19 +14,19 @@ public class InvoiceStatusService {
 
 	@Autowired
 	private InvoiceStatusRepository invoiceStatusRepository;
-	
+
 	public List<InvoiceStatus> getInvoiceStatus(){
 		return invoiceStatusRepository.findAll();
 	}
-	
+
 	public void saveInvoiceStatus(InvoiceStatus invoiceStatus) {
 		invoiceStatusRepository.save(invoiceStatus);
 	}
-	
+
 	public Optional<InvoiceStatus> getInvoiceStatusById(Integer id) {
 		return invoiceStatusRepository.findById(id);
 	}
-	
+
 	public void deleteInvoiceStatus(Integer id) {
 		invoiceStatusRepository.deleteById(id);
 	}

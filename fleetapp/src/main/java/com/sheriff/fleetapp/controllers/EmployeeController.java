@@ -4,13 +4,9 @@ import java.io.IOException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,7 +30,7 @@ public class EmployeeController {
 	@Autowired private StateService stateService;
 	@Autowired private EmployeeTypeService employeeTypeService;
 	@Autowired private JobTitleService jobTitleService;
-	
+
 	@GetMapping("/employee")
 	public String getEmployee(Model model) {
 		model.addAttribute("employees", employeeService.getEmployees());
@@ -56,19 +52,19 @@ public class EmployeeController {
 		employeeService.saveEmployee(employee);
 		return "redirect:/employee";
 	}
-	
+
 	@RequestMapping("/employee/findById")
 	@ResponseBody
 	public Optional<Employee> getEmployeeById(int id) {
 		return employeeService.getEmployeeById(id);
 	}
-	
+
 	@RequestMapping(value = "/employee/update", method = {RequestMethod.PUT, RequestMethod.GET})
 	public String updateEmployee(Employee employee) {
 		employeeService.saveEmployee(employee);
 		return "redirect:/employee";
 	}
-	
+
 	@RequestMapping(value = "/employee/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteEmployee(Integer id) {
 		employeeService.deleteEmployee(id);

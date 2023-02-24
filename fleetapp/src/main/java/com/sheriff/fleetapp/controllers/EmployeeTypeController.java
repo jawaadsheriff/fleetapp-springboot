@@ -27,25 +27,25 @@ public class EmployeeTypeController {
 		model.addAttribute("employeeTypes", employeeTypeList);
 		return "employeeType";
 	}
-	
+
 	@PostMapping("/employeeType/addNew")
 	public String saveEmployeeType(EmployeeType employeeType) {
 		employeeTypeService.saveEmployeeType(employeeType);
 		return "redirect:/employeeType";
 	}
-	
+
 	@RequestMapping("/employeeType/findById")
 	@ResponseBody
 	public Optional<EmployeeType> getEmployeeTypeById(int id) {
 		return employeeTypeService.getEmployeeTypeById(id);
 	}
-	
+
 	@RequestMapping(value = "/employeeType/update", method = {RequestMethod.PUT, RequestMethod.GET})
 	public String updateEmployeeType(EmployeeType employeeType) {
 		employeeTypeService.saveEmployeeType(employeeType);
 		return "redirect:/employeeType";
 	}
-	
+
 	@RequestMapping(value = "/employeeType/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteEmployeeType(Integer id) {
 		employeeTypeService.deleteEmployeeType(id);

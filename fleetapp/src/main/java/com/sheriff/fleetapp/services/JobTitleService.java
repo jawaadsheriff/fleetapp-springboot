@@ -14,19 +14,19 @@ public class JobTitleService {
 
 	@Autowired
 	private JobTitleRepository jobTitleRepository;
-	
+
 	public List<JobTitle> getJobTitle(){
 		return jobTitleRepository.findAll();
 	}
-	
+
 	public void saveJobTitle(JobTitle jobTitle) {
 		jobTitleRepository.save(jobTitle);
 	}
-	
+
 	public Optional<JobTitle> getJobTitleById(Integer id) {
 		return jobTitleRepository.findById(id);
 	}
-	
+
 	public void deleteJobTitle(Integer id) {
 		jobTitleRepository.deleteById(id);
 	}

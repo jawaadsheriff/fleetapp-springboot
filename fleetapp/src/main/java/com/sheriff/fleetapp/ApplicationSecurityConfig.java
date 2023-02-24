@@ -14,14 +14,16 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class ApplicationSecurityConfig{
-	
+
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 		.csrf()
 		.disable()
-		.authorizeHttpRequests()
-		.requestMatchers("/login", "/resources/**", "/assets/css/**", "/assets/fonts/**", "/assets/img/**", "/assets/vendor/**").permitAll()
+		.authorizeRequests()
+		.antMatchers("/login", "/resources/**", "/assets/css/**", "/assets/fonts/**", "/assets/img/**", "/assets/vendor/**", "/assets/vendor/**", "/assets/js/**").permitAll()
+		.antMatchers("/register", "/resources/**", "/assets/css/**", "/assets/fonts/**", "/assets/img/**", "/assets/vendor/**", "/assets/js/**", "/assets/vendor/**").permitAll()
+		.antMatchers("/user/addNew").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
@@ -32,18 +34,18 @@ public class ApplicationSecurityConfig{
 		.clearAuthentication(true)
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.logoutSuccessUrl("/login").permitAll();
-		
+
 		http.authenticationProvider(authenticationProvider());
 		return http.build();
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
 	}
-	
+
 	@Autowired UserDetailsService userDetailsService;
-	
+
 	@Bean
 	public AuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -51,5 +53,5 @@ public class ApplicationSecurityConfig{
 		provider.setPasswordEncoder(passwordEncoder());
 		return provider;
 	}
-	
+
 }

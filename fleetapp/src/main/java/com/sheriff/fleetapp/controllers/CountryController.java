@@ -17,10 +17,10 @@ import com.sheriff.fleetapp.services.CountryService;
 
 @Controller
 public class CountryController {
-	
+
 	@Autowired
 	private CountryService countryService;
-	
+
 	@GetMapping("/country")
 	public String getCountry(Model model) {
 		List<Country> countryList = countryService.getCountries();
@@ -33,19 +33,19 @@ public class CountryController {
 		countryService.saveCountry(country);
 		return "redirect:/country";
 	}
-	
+
 	@RequestMapping("/country/findById")
 	@ResponseBody
 	public Optional<Country> getCountryById(int id) {
 		return countryService.getCountryById(id);
 	}
-	
+
 	@RequestMapping(value = "/country/update", method = {RequestMethod.GET, RequestMethod.PUT})
 	public String updateCountry(Country country) {
 		countryService.saveCountry(country);
 		return "redirect:/country";
 	}
-	
+
 	@RequestMapping(value = "/country/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteCountry(Integer id) {
 		countryService.deleteCountry(id);

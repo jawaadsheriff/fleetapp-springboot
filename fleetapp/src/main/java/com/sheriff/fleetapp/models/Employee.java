@@ -2,9 +2,9 @@ package com.sheriff.fleetapp.models;
 
 import java.util.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.data.annotation.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,19 +20,19 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Employee extends Person {
-	
+
 	@ManyToOne
 	@JoinColumn(name="employeetypeid", insertable=false, updatable=false)
 	private EmployeeType employeeType;
 	private Integer employeetypeid;
 	private String username;
-	
+
 	@ManyToOne
 	@JoinColumn(name="jobtitleid", insertable=false, updatable=false)
 	private JobTitle jobTitle;
 	private Integer jobtitleid;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")	
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date hireDate;
 
 	public EmployeeType getEmployeeType() {
@@ -81,7 +81,7 @@ public class Employee extends Person {
 	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
 	}
-	
+
 	@Transient
 	public String getPhotosImagePath() {
 		if(getPhoto() == null || getId() == null) {

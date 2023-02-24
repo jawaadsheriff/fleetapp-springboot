@@ -27,25 +27,25 @@ public class InvoiceStatusController {
 		model.addAttribute("invoiceStatuses", invoiceStatusList);
 		return "invoiceStatus";
 	}
-	
+
 	@PostMapping("/invoiceStatus/addNew")
 	public String saveInvoiceStatus(InvoiceStatus invoiceStatus) {
 		invoiceStatusService.saveInvoiceStatus(invoiceStatus);
 		return "redirect:/invoiceStatus";
 	}
-	
+
 	@RequestMapping("/invoiceStatus/findById")
 	@ResponseBody
 	public Optional<InvoiceStatus> getInvoiceStatusById(int id) {
 		return invoiceStatusService.getInvoiceStatusById(id);
 	}
-	
+
 	@RequestMapping(value = "/invoiceStatus/update", method = {RequestMethod.PUT, RequestMethod.GET})
 	public String updateInvoiceStatus(InvoiceStatus invoiceStatus) {
 		invoiceStatusService.saveInvoiceStatus(invoiceStatus);
 		return "redirect:/invoiceStatus";
 	}
-	
+
 	@RequestMapping(value = "/invoiceStatus/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteInvoiceStatus(Integer id) {
 		invoiceStatusService.deleteInvoiceStatus(id);

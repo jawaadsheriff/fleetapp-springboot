@@ -19,16 +19,16 @@ import com.sheriff.fleetapp.services.VehicleService;
 
 @Controller
 public class VehicleHireController {
-	
+
 	@Autowired
 	private VehicleHireService vehicleHireService;
-	
+
 	@Autowired
 	private ClientService clientService;
-	
+
 	@Autowired
 	private LocationService locationService;
-	
+
 	@Autowired
 	private VehicleService vehicleService;
 
@@ -40,25 +40,25 @@ public class VehicleHireController {
 		model.addAttribute("locations", locationService.getLocation());
 		return "vehicleHire";
 	}
-	
+
 	@PostMapping("/vehicleHire/addNew")
 	public String saveVehicleHire(VehicleHire vehicleHire) {
 		vehicleHireService.saveVehicleHire(vehicleHire);
 		return "redirect:/vehicleHire";
 	}
-	
+
 	@RequestMapping("/vehicleHire/findById")
 	@ResponseBody
 	public Optional<VehicleHire> getVehicleHireById(int id) {
 		return vehicleHireService.getVehicleHireById(id);
 	}
-	
+
 	@RequestMapping(value = "/vehicleHire/update", method = {RequestMethod.GET, RequestMethod.PUT})
 	public String updateVehicleHire(VehicleHire vehicleHire) {
 		vehicleHireService.saveVehicleHire(vehicleHire);
 		return "redirect:/vehicleHire";
 	}
-	
+
 	@RequestMapping(value = "/vehicleHire/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteVehicleHire(Integer id) {
 		vehicleHireService.deleteVehicleHire(id);

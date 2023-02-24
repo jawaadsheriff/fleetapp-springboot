@@ -11,21 +11,21 @@ import com.sheriff.fleetapp.repositories.EmployeeRepository;
 
 @Service
 public class EmployeeService {
-	
+
 	@Autowired private EmployeeRepository employeeRepository;
 
 	public List<Employee> getEmployees(){
 		return employeeRepository.findAll();
 	}
-	
+
 	public void saveEmployee(Employee employee) {
 		employeeRepository.save(employee);
 	}
-	
+
 	public Optional<Employee> getEmployeeById(Integer id) {
 		return employeeRepository.findById(id);
 	}
-	
+
 	public void deleteEmployee(Integer id) {
 		employeeRepository.deleteById(id);
 	}

@@ -2,12 +2,12 @@ package com.sheriff.fleetapp.models;
 
 import java.util.Date;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MappedSuperclass;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @MappedSuperclass
 public class Person {
-		
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -32,17 +32,17 @@ public class Person {
 	private String socialSecurityNumber;
 	private String gender;
 	private String maritalStatus;
-	
+
 	@ManyToOne
 	@JoinColumn(name="countryid", insertable=false, updatable=false)
 	private Country country;
 	private Integer countryid;
-	
+
 	@ManyToOne
 	@JoinColumn(name="stateid", insertable=false, updatable=false)
 	private State state;
 	private Integer stateid;
-	
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateOfBirth;
 	private String city;
@@ -51,7 +51,7 @@ public class Person {
 	private String mobile;
 	private String email;
 	private String photo;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -172,5 +172,5 @@ public class Person {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	
+
 }

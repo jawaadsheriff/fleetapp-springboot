@@ -14,19 +14,19 @@ public class VehicleMakeService {
 
 	@Autowired
 	private VehicleMakeRepository vehicleMakeRepository;
-	
+
 	public List<VehicleMake> getVehicleMake(){
 		return vehicleMakeRepository.findAll();
 	}
-	
+
 	public void saveVehicleMake(VehicleMake vehicleMake) {
 		vehicleMakeRepository.save(vehicleMake);
 	}
-	
+
 	public Optional<VehicleMake> getVehicleMakeById(Integer id) {
 		return vehicleMakeRepository.findById(id);
 	}
-	
+
 	public void deleteVehicleMakeById(Integer id) {
 		vehicleMakeRepository.deleteById(id);
 	}

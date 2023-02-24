@@ -14,19 +14,19 @@ public class ContactService {
 
 	@Autowired
 	private ContactRepository contactRepository;
-	
+
 	public List<Contact> getContact(){
 		return contactRepository.findAll();
 	}
-	
+
 	public void saveContact(Contact contact) {
 		contactRepository.save(contact);
 	}
-	
+
 	public void deleteContact(Integer id) {
 		contactRepository.deleteById(id);
 	}
-	
+
 	public Optional<Contact> findContactById(Integer id) {
 		return contactRepository.findById(id);
 	}

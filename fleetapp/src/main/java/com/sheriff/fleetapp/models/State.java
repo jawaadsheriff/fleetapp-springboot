@@ -1,11 +1,12 @@
 package com.sheriff.fleetapp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -17,10 +18,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class State {
-	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;	
+	private Integer id;
 	private String description;
 	private String capital;
     private String code;
@@ -86,5 +87,5 @@ public class State {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	
+
 }

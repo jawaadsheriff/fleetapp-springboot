@@ -14,19 +14,19 @@ public class ClientService {
 
 	@Autowired
 	private ClientRepository clientRepository;
-	
+
 	public List<Client> getClient(){
 		return clientRepository.findAll();
 	}
-	
+
 	public void saveClient(Client client) {
 		clientRepository.save(client);
 	}
-	
+
 	public void deleteClient(Integer id) {
 		clientRepository.deleteById(id);
 	}
-	
+
 	public Optional<Client> findClientById(Integer id) {
 		return clientRepository.findById(id);
 	}

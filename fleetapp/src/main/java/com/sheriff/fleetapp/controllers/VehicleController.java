@@ -22,7 +22,7 @@ import com.sheriff.fleetapp.services.VehicleTypeService;
 
 @Controller
 public class VehicleController {
-	
+
 	@Autowired private VehicleService vehicleService;
 	@Autowired private VehicleTypeService vehicleTypeService;
 	@Autowired private VehicleMakeService vehicleMakeService;
@@ -42,25 +42,25 @@ public class VehicleController {
 		model.addAttribute("locations", locationService.getLocation());
 		return "vehicle";
 	}
-	
+
 	@PostMapping("/vehicle/addNew")
 	public String saveVehicle(Vehicle vehicle) {
 		vehicleService.saveVehicle(vehicle);
 		return "redirect:/vehicle";
 	}
-	
+
 	@RequestMapping("/vehicle/findById")
 	@ResponseBody
 	public Optional<Vehicle> findVehicleById(int id) {
 		return vehicleService.getVehicleById(id);
 	}
-	
+
 	@RequestMapping(value = "/vehicle/update", method = {RequestMethod.GET, RequestMethod.PUT})
 	public String updateVehicle(Vehicle vehicle) {
 		vehicleService.saveVehicle(vehicle);
 		return "redirect:/vehicle";
 	}
-	
+
 	@RequestMapping(value = "vehicle/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteVehicle(Integer id) {
 		vehicleService.deleteVehicle(id);

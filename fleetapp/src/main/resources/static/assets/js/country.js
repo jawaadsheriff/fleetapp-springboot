@@ -31,6 +31,10 @@ $(document).ready(function(){
 			$("#codeDetails").val(country.code);
 			$("#continentDetails").val(country.continent);
 			$("#nationalityDetails").val(country.nationality);
+			$("#createdByDetails").val(country.createdBy);
+			$("#createdDateDetails").val(country.createdDate.substr(0,19).replace("T", " "));
+			$("#lastModifiedByDetails").val(country.lastModifiedBy);
+			$("#lastModifiedDateDetails").val(country.lastModifiedDate.substr(0,19).replace("T", " "));
 		});
 		$("#detailsModal").modal('show');
 	});

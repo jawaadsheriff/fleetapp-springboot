@@ -14,19 +14,19 @@ public class StateService {
 
 	@Autowired
 	private StateRepository stateRepository;
-	
+
 	public List<State> getStates(){
 		return stateRepository.findAll();
 	}
-	
+
 	public Optional<State> getStateById(Integer id) {
 		return stateRepository.findById(id);
 	}
-	
+
 	public void saveState(State state) {
 		stateRepository.save(state);
 	}
-	
+
 	public void deleteState(Integer id) {
 		stateRepository.deleteById(id);
 	}

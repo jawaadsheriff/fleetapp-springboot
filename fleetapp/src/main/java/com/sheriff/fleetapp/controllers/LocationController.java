@@ -24,13 +24,13 @@ public class LocationController {
 
 	@Autowired
 	private LocationService locationService;
-	
+
 	@Autowired
 	private CountryService countryService;
-	
+
 	@Autowired
 	private StateService stateService;
-	
+
 	@GetMapping("/location")
 	public String getLocation(Model model) {
 		List<Location> locationList = locationService.getLocation();
@@ -41,25 +41,25 @@ public class LocationController {
 		model.addAttribute("states", stateList);
 		return "location";
 	}
-	
+
 	@PostMapping("/location/addNew")
 	public String saveLocation(Location location) {
 		locationService.saveLocation(location);
 		return "redirect:/location";
 	}
-	
+
 	@GetMapping("/location/findById")
 	@ResponseBody
 	public Optional<Location> getLocationById(int id) {
 		return locationService.getLocationById(id);
 	}
-	
+
 	@RequestMapping(value = "/location/update", method = {RequestMethod.PUT, RequestMethod.GET})
 	public String updateLocation(Location location) {
 		locationService.saveLocation(location);
 		return "redirect:/location";
 	}
-	
+
 	@RequestMapping(value = "/location/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteLocation(Integer id) {
 		locationService.deleteLocationById(id);

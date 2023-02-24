@@ -21,13 +21,13 @@ public class VehicleMovementController {
 
 	@Autowired
 	private VehicleMovementService vehicleMovementService;
-	
+
 	@Autowired
 	private VehicleService vehicleService;
-	
+
 	@Autowired
 	private LocationService locationService;
-	
+
 	@GetMapping("/vehicleMovement")
 	public String getVehicleMovement(Model model) {
 		model.addAttribute("vehicleMovements", vehicleMovementService.getVehicleMovement());
@@ -35,25 +35,25 @@ public class VehicleMovementController {
 		model.addAttribute("locations", locationService.getLocation());
 		return "vehicleMovement";
 	}
-	
+
 	@PostMapping("/vehicleMovement/addNew")
 	public String saveVehicleMovement(VehicleMovement vehicleMovement) {
 		vehicleMovementService.saveVehicleMovement(vehicleMovement);
 		return "redirect:/vehicleMovement";
 	}
-	
+
 	@RequestMapping("/vehicleMovement/findById")
 	@ResponseBody
 	public Optional<VehicleMovement> getVehicleMovementById(int id) {
 		return vehicleMovementService.getVehicleMovementById(id);
 	}
-	
+
 	@RequestMapping(value = "/vehicleMovement/update", method = {RequestMethod.PUT, RequestMethod.GET})
 	public String updateVehicleMovement(VehicleMovement vehicleMovement) {
 		vehicleMovementService.saveVehicleMovement(vehicleMovement);
 		return "redirect:/vehicleMovement";
 	}
-	
+
 	@RequestMapping(value = "/vehicleMovement/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteVehicleMovement(Integer id) {
 		vehicleMovementService.deleteVehicleMovement(id);

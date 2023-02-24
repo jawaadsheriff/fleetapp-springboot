@@ -1,12 +1,13 @@
 package com.sheriff.fleetapp.models;
 
+import static javax.persistence.TemporalType.TIMESTAMP;
+
 import java.util.Date;
 
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.Temporal;
-import static jakarta.persistence.TemporalType.TIMESTAMP;
-
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -19,10 +20,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public abstract class Auditable<U> {
 
     @CreatedBy
+    @Column(name = "created_by", updatable = false)
     protected U createdBy;
 
     @CreatedDate
     @Temporal(TIMESTAMP)
+    @Column(name = "created_date", updatable = false)
     protected Date createdDate;
 
     @LastModifiedBy

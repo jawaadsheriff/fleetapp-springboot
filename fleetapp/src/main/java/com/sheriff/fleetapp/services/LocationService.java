@@ -14,19 +14,19 @@ public class LocationService {
 
 	@Autowired
 	private LocationRepository locationRepository;
-	
+
 	public List<Location> getLocation(){
 		return locationRepository.findAll();
 	}
-	
+
 	public void saveLocation(Location location) {
 		locationRepository.save(location);
 	}
-	
+
 	public Optional<Location> getLocationById(Integer id) {
 		return locationRepository.findById(id);
 	}
-	
+
 	public void deleteLocationById(Integer id) {
 		locationRepository.deleteById(id);
 	}

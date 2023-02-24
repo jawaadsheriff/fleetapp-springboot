@@ -215,7 +215,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${#authentication.getPrincipal().getUsername()}">Guest</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -577,27 +577,43 @@
                     <div class="modal-body">
                     <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Id</label>
-	                  <input type="text" class="form-control" id="idDetails" name="id" readonly>
+	                  <input type="text" class="form-control" id="idDetails" name="id" disabled>
 	                </div>
 	                <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Description</label>
-	                  <input type="text" class="form-control" id="descriptionDetails" name="description" readonly>
+	                  <input type="text" class="form-control" id="descriptionDetails" name="description" disabled>
 	                </div>
 	                <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Capital</label>
-	                  <input type="text" class="form-control" id="capitalDetails" name="capital" readonly>
+	                  <input type="text" class="form-control" id="capitalDetails" name="capital" disabled>
 	                </div>
 	                <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Code</label>
-	                  <input type="text" class="form-control" id="codeDetails" name="code" readonly>
+	                  <input type="text" class="form-control" id="codeDetails" name="code" disabled>
 	                </div>
 	                <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Continent</label>
-	                  <input type="text" class="form-control" id="continentDetails" name="continent" readonly>
+	                  <input type="text" class="form-control" id="continentDetails" name="continent" disabled>
 	                </div>
 	                <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Nationality</label>
-	                  <input type="text" class="form-control" id="nationalityDetails" name="nationality" readonly>
+	                  <input type="text" class="form-control" id="nationalityDetails" name="nationality" disabled>
+	                </div>
+	                <div class="col-12">
+	                  <label for="inputNanme4" class="form-label">Created By</label>
+	                  <input type="text" class="form-control" id="createdByDetails" name="createdBy" disabled>
+	                </div>
+	                <div class="col-12">
+	                  <label for="inputNanme4" class="form-label">Created Date</label>
+	                  <input type="text" class="form-control" id="createdDateDetails" name="createdDate" disabled>
+	                </div>
+	                <div class="col-12">
+	                  <label for="inputNanme4" class="form-label">Last Updated By</label>
+	                  <input type="text" class="form-control" id="lastModifiedByDetails" name="lastModifiedBy" disabled>
+	                </div>
+	                <div class="col-12">
+	                  <label for="inputNanme4" class="form-label">Last Updated On</label>
+	                  <input type="text" class="form-control" id="lastModifiedDateDetails" name="lastModifiedDate" disabled>
 	                </div>
                     </div>
                     <div class="modal-footer">

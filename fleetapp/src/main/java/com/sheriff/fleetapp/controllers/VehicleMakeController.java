@@ -17,7 +17,7 @@ import com.sheriff.fleetapp.services.VehicleMakeService;
 
 @Controller
 public class VehicleMakeController {
-	
+
 	@Autowired
 	private VehicleMakeService vehicleMakeService;
 
@@ -27,25 +27,25 @@ public class VehicleMakeController {
 		model.addAttribute("vehicleMakes", vehicleMakeList);
 		return "vehicleMake";
 	}
-	
+
 	@PostMapping("/vehicleMake/addNew")
 	public String saveVehicleMake(VehicleMake vehicleMake) {
 		vehicleMakeService.saveVehicleMake(vehicleMake);
 		return "redirect:/vehicleMake";
 	}
-	
+
 	@RequestMapping("/vehicleMake/findById")
 	@ResponseBody
 	public Optional<VehicleMake> getVehicleMakeById(int id) {
 		return vehicleMakeService.getVehicleMakeById(id);
 	}
-	
+
 	@RequestMapping(value = "/vehicleMake/update", method = {RequestMethod.PUT, RequestMethod.GET})
 	public String updateVehicleMake(VehicleMake vehicleMake) {
 		vehicleMakeService.saveVehicleMake(vehicleMake);
 		return "redirect:/vehicleMake";
 	}
-	
+
 	@RequestMapping(value = "/vehicleMake/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteVehicleMake(Integer id) {
 		vehicleMakeService.deleteVehicleMakeById(id);

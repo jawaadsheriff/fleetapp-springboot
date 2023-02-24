@@ -18,16 +18,16 @@ import com.sheriff.fleetapp.services.InvoiceStatusService;
 
 @Controller
 public class InvoiceController {
-	
+
 	@Autowired
 	private InvoiceService invoiceService;
-	
+
 	@Autowired
 	private InvoiceStatusService invoiceStatusService;
-	
+
 	@Autowired
 	private ClientService clientService;
-	
+
 	@GetMapping("/invoice")
 	public String getInvoice(Model model) {
 		model.addAttribute("invoices", invoiceService.getInvoices());
@@ -35,13 +35,13 @@ public class InvoiceController {
 		model.addAttribute("clients", clientService.getClient());
 		return "invoice";
 	}
-	
+
 	@PostMapping("/invoice/addNew")
 	public String saveInvoice(Invoice invoice) {
 		invoiceService.saveInvoice(invoice);
 		return "redirect:/invoice";
 	}
-	
+
 	@RequestMapping("/invoice/findById")
 	@ResponseBody
 	public Optional<Invoice> getInvoiceById(int id) {
@@ -53,7 +53,7 @@ public class InvoiceController {
 		invoiceService.saveInvoice(invoice);
 		return "redirect:/invoice";
 	}
-	
+
 	@RequestMapping(value = "/invoice/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteInvoice(Integer id) {
 		invoiceService.deleteInvoice(id);

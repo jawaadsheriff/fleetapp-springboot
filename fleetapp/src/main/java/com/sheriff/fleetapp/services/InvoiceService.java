@@ -11,14 +11,14 @@ import com.sheriff.fleetapp.repositories.InvoiceRepository;
 
 @Service
 public class InvoiceService {
-	
+
 	@Autowired
 	private InvoiceRepository invoiceRepository;
-	
+
 	public List<Invoice> getInvoices(){
 		return invoiceRepository.findAll();
 	}
-	
+
 	public Optional<Invoice> getInvoiceById(Integer id) {
 		return invoiceRepository.findById(id);
 	}
@@ -26,7 +26,7 @@ public class InvoiceService {
 	public void saveInvoice(Invoice invoice) {
 		invoiceRepository.save(invoice);
 	}
-	
+
 	public void deleteInvoice(Integer id) {
 		invoiceRepository.deleteById(id);
 	}

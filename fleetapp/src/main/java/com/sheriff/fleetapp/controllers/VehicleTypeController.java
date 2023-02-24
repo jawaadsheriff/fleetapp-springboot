@@ -17,7 +17,7 @@ import com.sheriff.fleetapp.services.VehicleTypeService;
 
 @Controller
 public class VehicleTypeController {
-	
+
 	@Autowired
 	private VehicleTypeService vehicleTypeService;
 
@@ -27,25 +27,25 @@ public class VehicleTypeController {
 		model.addAttribute("vehicleTypes", vehicleTypeList);
 		return "vehicleType";
 	}
-	
+
 	@PostMapping("/vehicleType/addNew")
 	public String saveVehicleType(VehicleType vehicleType) {
 		vehicleTypeService.saveVehicleType(vehicleType);
 		return "redirect:/vehicleType";
 	}
-	
+
 	@RequestMapping("/vehicleType/findById")
 	@ResponseBody
 	public Optional<VehicleType> getVehicleTypeById(int id) {
 		return vehicleTypeService.getVehicleTypeById(id);
 	}
-	
+
 	@RequestMapping(value = "/vehicleType/update", method = {RequestMethod.PUT, RequestMethod.GET})
 	public String updateVehicleType(VehicleType vehicleType) {
 		vehicleTypeService.saveVehicleType(vehicleType);
 		return "redirect:/vehicleType";
 	}
-	
+
 	@RequestMapping(value = "/vehicleType/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
 	public String deleteVehicleType(Integer id) {
 		vehicleTypeService.deleteVehicleType(id);

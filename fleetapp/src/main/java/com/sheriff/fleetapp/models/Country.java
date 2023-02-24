@@ -2,15 +2,15 @@ package com.sheriff.fleetapp.models;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,8 +20,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Country {
-	
+public class Country extends Auditable<String>{
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -30,10 +30,10 @@ public class Country {
 	private String description;
 	private String nationality;
 	private String continent;
-	
+
 	@OneToMany(mappedBy="country")
 	private List<State> states;
-	
+
 	public Integer getId() {
 		return id;
 	}

@@ -11,22 +11,22 @@ import com.sheriff.fleetapp.repositories.VehicleRepository;
 
 @Service
 public class VehicleService {
-	
+
 	@Autowired
 	private VehicleRepository vehicleRepository;
 
 	public List<Vehicle> getVehicles(){
 		return vehicleRepository.findAll();
 	}
-	
+
 	public void saveVehicle(Vehicle vehicle) {
 		vehicleRepository.save(vehicle);
 	}
-	
+
 	public Optional<Vehicle> getVehicleById(Integer id) {
 		return vehicleRepository.findById(id);
 	}
-	
+
 	public void deleteVehicle(Integer id) {
 		vehicleRepository.deleteById(id);
 	}
