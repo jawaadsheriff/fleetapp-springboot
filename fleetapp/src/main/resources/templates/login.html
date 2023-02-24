@@ -37,7 +37,7 @@
   ======================================================== -->
 </head>
 
-<body>
+<body style="background-image: url('assets/img/bgbody.jpeg'); background-size:100% 100%;">
 
   <main>
     <div class="container">
@@ -76,8 +76,11 @@
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
+                      <div class="input-group has-validation">
+                      	<span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-key-fill"></i></span>
+                      	<input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
+                      	<div class="invalid-feedback">Please enter your password!</div>
+                      </div>
                     </div>
 
                     <div class="col-12">
@@ -102,7 +105,7 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
               </div>
 
             </div>
