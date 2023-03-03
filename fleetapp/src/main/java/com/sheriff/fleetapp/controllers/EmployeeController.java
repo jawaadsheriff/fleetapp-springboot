@@ -70,4 +70,10 @@ public class EmployeeController {
 		employeeService.deleteEmployee(id);
 		return "redirect:/employee";
 	}
+	
+	@RequestMapping(value = "/employee/assignUsername")
+	public String assignUsername(int id) {
+		employeeService.assignUsername(id);
+		return "redirect:/employee";
+	}
 }

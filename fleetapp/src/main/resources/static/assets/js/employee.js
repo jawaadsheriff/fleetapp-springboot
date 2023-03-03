@@ -4,6 +4,7 @@ $(document).ready(function() {
 		var href = $(this).attr('href');
 		$.get(href, function(employee, status) {
 			$("#idEdit").val(employee.id);
+			$("#usernameEdit").val(employee.username);
 			$("#ddlTitleEdit").val(employee.title);
 			$("#initialsEdit").val(employee.initials);
 			$("#socialSecurityNumberEdit").val(employee.socialSecurityNumber);

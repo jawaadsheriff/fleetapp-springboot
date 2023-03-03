@@ -30,4 +30,9 @@ public class ApplicationController {
 	public String register() {
 		return "register";
 	}
+	
+	@GetMapping("/accessDenied")
+	public String accessDenied() {
+		return "accessDenied";
+	}
 }

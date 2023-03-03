@@ -463,23 +463,23 @@
                     <form class="row g-3" th:action="@{/country/addNew}" method="post">
 	                <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Description</label>
-	                  <input type="text" class="form-control" id="inputNanme4" name="description">
+	                  <input type="text" class="form-control" id="inputNanme4" name="description" required>
 	                </div>
 	                <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Capital</label>
-	                  <input type="text" class="form-control" id="inputNanme4" name="capital">
+	                  <input type="text" class="form-control" id="inputNanme4" name="capital" required>
 	                </div>
 	                <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Code</label>
-	                  <input type="text" class="form-control" id="inputNanme4" name="code">
+	                  <input type="text" class="form-control" id="inputNanme4" name="code" required pattern="[A-Za-z]{2,3}">
 	                </div>
 	                <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Continent</label>
-	                  <input type="text" class="form-control" id="inputNanme4" name="continent">
+	                  <input type="text" class="form-control" id="inputNanme4" name="continent" required>
 	                </div>
 	                <div class="col-12">
 	                  <label for="inputNanme4" class="form-label">Nationality</label>
-	                  <input type="text" class="form-control" id="inputNanme4" name="nationality">
+	                  <input type="text" class="form-control" id="inputNanme4" name="nationality" required>
 	                </div>
 	                <div class="text-center">
 	                  <button type="submit" class="btn btn-primary">Submit</button>
